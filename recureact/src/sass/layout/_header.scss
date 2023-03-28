@@ -1,7 +1,14 @@
 .navbar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
+    height: 30px;
     background-color: grey;
     .navbar-options{
+        display: flex;
+        justify-content: space-between;
+        width: 400px;
         .navbar-option{
 
         }
