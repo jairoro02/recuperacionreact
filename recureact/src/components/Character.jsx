@@ -2,13 +2,10 @@ import React from 'react'
 
 const Character = ({id,nombre,fotopersonaje,role,fotorol,fondo}) => {
 
-    const inLineClass = {
-        backgroundImage: `${fondo}`
-    }
-    console.log(nombre)
+
 
   return (
-    <li key={id} className='character' style={inLineClass} >
+    <li key={id} className='character' style={{ backgroundImage: `url(${fondo})` }} >
         <img src={fotopersonaje} />
         <div className='infopersonaje'>
             <div className='texto'>
