@@ -16,7 +16,7 @@ const Characters = () => {
         useApi(url)
     },[])
   return (
-    <ul>
+    <ul className='characters'>
          {agents.map((agent)=>(
             <Character id={agent.uuid} nombre={agent.displayName} fotopersonaje={agent.bustPortrait} role={agent.role.displayName} fotorol={agent.role.displayIcon} fondo={agent.background}/>
         ))}

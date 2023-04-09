@@ -1,3 +1,9 @@
+.characters{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 .character{
     display: flex;
     flex-direction: column;
