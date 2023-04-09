@@ -13,7 +13,7 @@
     margin-bottom: 10%;
     background-color: black;
    
-    width: 50%;
+    width: 40%;
     .img{
         display: flex;
         background-repeat: no-repeat;
@@ -35,6 +35,7 @@
         }
         img{
             justify-self: center;
+            margin-top: 15%;
         }
     }
 }
