@@ -9,11 +9,11 @@ const Characters = () => {
     const url = 'https://valorant-api.com/v1/agents?isPlayableCharacter=true'
 
 
-    useApi(url).then(response=>{
-        setAgents(response)
-    })
+    
     useEffect(()=>{
-        useApi(url)
+      useApi(url).then(response=>{
+        setAgents(response)
+      })
     },[])
   return (
     <ul className='characters'>
