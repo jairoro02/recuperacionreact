@@ -5,12 +5,12 @@ const Maps = ({list}) => {
     <div className='maps'>
         {list.map((map)=>{
             return(
-            <div className='map'>
-                <img src={map.listViewIcon}/>
-                <img src={map.displayIcon}/>
+            <div key={map.uuid} className='map'>
+                <img className='mid' src={map.listViewIcon}/>
+                <img className='complete' src={map.displayIcon}/>
                 <div className='info'>
-                    <h1>Name: {map.displayName}</h1>
-                    <h1>Coordinates: {map.coordinates}</h1>
+                    <h1 className='name'>{map.displayName}</h1>
+                    <h2 className='coor'>{map.coordinates}</h2>
                 </div>
             </div>)
         })}
