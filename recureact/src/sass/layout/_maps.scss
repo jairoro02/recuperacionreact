@@ -17,6 +17,7 @@
             width: 100%;
         }
         .complete{
+            position: relative;
             width: 80%;
         }
         .info{
@@ -28,7 +29,9 @@
                 transform: translate(-50%, -50%);
             }
             .coor{
-
+                position: absolute;
+                left: 60%;
+                bottom: 3%;
             }
         }
     }
