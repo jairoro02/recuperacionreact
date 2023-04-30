@@ -4,6 +4,7 @@ const Maps = ({list}) => {
   return (
     <div className='maps'>
         {list.map((map)=>{
+          if(map.displayName != "The Range"){
             return(
             <div key={map.uuid} className='map'>
                 <img className='mid' src={map.listViewIcon}/>
@@ -13,6 +14,7 @@ const Maps = ({list}) => {
                     <h2 className='coor'>{map.coordinates}</h2>
                 </div>
             </div>)
+        }
         })}
     </div>
   )
