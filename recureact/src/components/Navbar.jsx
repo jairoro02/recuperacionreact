@@ -15,6 +15,11 @@ const Navbar = () => {
                 Weapons
             </NavLink>
         </div>
+        <div className='user-options'>
+            <NavLink to='/register' className='user-option'>
+                Register
+            </NavLink>
+        </div>
     </nav>
   )
 }

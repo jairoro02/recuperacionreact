@@ -1,5 +1,6 @@
 .navbar{
     display: flex;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
     width: 100%;
@@ -8,9 +9,13 @@
     .navbar-options{
         display: flex;
         justify-content: space-between;
+        margin-left: 40%;
         width: 400px;
         .navbar-option{
 
         }
+    }
+    .user-options{
+        padding-left: 36%;
     }
 }

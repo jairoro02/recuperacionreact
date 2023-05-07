@@ -4,6 +4,7 @@ import Characters from "../pages/Characters";
 import Weapons from "../pages/Weapons";
 import NotFound from "../pages/NOtFound";
 import LayoutPublic from "../layouts/LayoutPublic";
+import Register from "../pages/Register";
 
 
 
@@ -25,6 +26,10 @@ export const router = createBrowserRouter([
                 path: '/weapons',
                 element: <Weapons />
             },
+            {
+                path: '/register',
+                element: <Register />
+            }
         ],
     },
 ])
