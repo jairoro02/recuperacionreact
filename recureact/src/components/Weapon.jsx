@@ -1,40 +1,43 @@
-import React from 'react'
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-const Weapon = ({list}) => {
+const Weapon = ({ list }) => {
 
   return (
     <div className='weapons'>
-      {list.map((weapon)=>{
-         if(weapon.shopData === null){
-          console.log(weapon)
+      {list.map((weapon) => {
+        if (weapon.shopData === null) {
+          console.log(weapon);
           return (
-            <div key={weapon.uuid} className='weapon'>
+            <Link key={weapon.uuid} to={`/skins/${weapon.uuid}`}>
+              <div className='weapon'>
                 <img src={weapon.displayIcon} />
                 <div className='info'>
-                    <h1>Category: Mele</h1>
-                    <h1>Name: {weapon.displayName}</h1>
+                  <h1>Category: Mele</h1>
+                  <h1>Name: {weapon.displayName}</h1>
                 </div>
-            </div>
-          )
-         }
-         else{
+              </div>
+            </Link>
+          );
+        } else {
           return (
-            <div key={weapon.uuid} className='weapon'>
+            <Link key={weapon.uuid} to={`/skins/${weapon.uuid}`}>
+              <div className='weapon'>
                 <img src={weapon.displayIcon} />
                 <div className='info'>
-                    <h1>Category: {weapon.shopData.category}</h1>
-                    <h1>Name: {weapon.displayName}</h1>
-                    <h1>Price: {weapon.shopData.cost}</h1>
-                    <h1>Firerate: {weapon.weaponStats.fireRate}</h1>
-                    <h1>Bullets: {weapon.weaponStats.magazineSize}</h1>
+                  <h1>Category: {weapon.shopData.category}</h1>
+                  <h1>Name: {weapon.displayName}</h1>
+                  <h1>Price: {weapon.shopData.cost}</h1>
+                  <h1>Firerate: {weapon.weaponStats.fireRate}</h1>
+                  <h1>Bullets: {weapon.weaponStats.magazineSize}</h1>
                 </div>
-            </div>
-          )
-         }
-         
+              </div>
+            </Link>
+          );
+        }
       })}
     </div>
-  )
-}
+  );
+};
 
-export default Weapon
+export default Weapon;
