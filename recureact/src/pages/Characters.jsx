@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import { useApi } from '../helper/useApi'
 import Character from '../components/Character';
+import Loader from '../components/Loader';
 
 const Characters = () => {
 
@@ -15,14 +16,19 @@ const Characters = () => {
         setAgents(response)
       })
     },[])
-  return (
-    <ul className='characters'>
-         {agents.map((agent)=>(
-            <Character id={agent.uuid} nombre={agent.displayName} fotopersonaje={agent.bustPortrait} role={agent.role.displayName} fotorol={agent.role.displayIcon} fondo={agent.background}/>
-        ))}
+    if(agents.length!=0){
+      return (
+      <ul className='characters'>
+          {agents.map((agent)=>(
+              <Character id={agent.uuid} nombre={agent.displayName} fotopersonaje={agent.bustPortrait} role={agent.role.displayName} fotorol={agent.role.displayIcon} fondo={agent.background}/>
+          ))}
 
-    </ul>
-  )
+      </ul>)
+    }else{
+      return <Loader />
+    }
+    
+ 
 }
 
 export default Characters

@@ -1,7 +1,10 @@
 import React from 'react'
 import {NavLink} from 'react-router-dom'
+import { useUserContext } from '../context/UserContext'
 
 const Navbar = () => {
+    const { user } = useUserContext
+    console.log(user)
   return (
     <nav className='navbar'>
         <div className='navbar-options'>
@@ -15,11 +18,19 @@ const Navbar = () => {
                 Weapons
             </NavLink>
         </div>
+
         <div className='user-options'>
-            <NavLink to='/register' className='user-option'>
-                Register
-            </NavLink>
-        </div>
+        {user ? (
+          <NavLink to='/weapons' className='user-option'>
+            Profile
+          </NavLink>
+        ) : (
+          
+          <NavLink to='/register' className='user-option'>
+            Register
+          </NavLink>
+        )}
+      </div>
     </nav>
   )
 }
