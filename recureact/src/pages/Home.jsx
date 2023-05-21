@@ -2,6 +2,7 @@
 import React, {useEffect, useState} from 'react'
 import { useApi } from '../helper/useApi'
 import Maps from '../components/Maps'
+import Loader from '../components/Loader'
 
 const Home = () => {
 
@@ -14,9 +15,14 @@ const Home = () => {
     })
   },[])
 
-  return (
-    <Maps list={maps} />
-  )
+  if(maps.length!=0){
+    return (
+      <Maps list={maps} />
+    )
+  }else{
+    return <Loader />
+  }
+  
 }
 
 export default Home
