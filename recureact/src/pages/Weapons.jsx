@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import { useApi } from '../helper/useApi'
 import Weapon from '../components/Weapon';
+import Loader from '../components/Loader';
 
 const Weapons = () => {
 
@@ -15,6 +16,8 @@ const Weapons = () => {
     },[])
     if(weapons.length!=0){
       return <Weapon list={weapons} />
+    }else{
+      return <Loader />
     }
       
 }
