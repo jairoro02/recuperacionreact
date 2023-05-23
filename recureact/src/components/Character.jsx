@@ -10,8 +10,11 @@ const Character = ({ id, nombre, fotopersonaje, role, fotorol, fondo }) => {
 
   useEffect(() => {
     const existingFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
+    // Comprobamos si el favorito existe en la lista de favoritos
     const favorite = existingFavorites.find(item => item.id === id);
+    // Con !! convertimos el valor en booleano, si es undefined es falso
     setIsFavorite(!!favorite);
+    // Actualizamos el valor de favoritos
     setFavorites(existingFavorites);
   }, [id]);
 
@@ -25,6 +28,7 @@ const Character = ({ id, nombre, fotopersonaje, role, fotorol, fondo }) => {
       fondo,
     };
 
+    //Guardamos el nuevo favorito en la lista
     const existingFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
     const updatedFavorites = [...existingFavorites, favoriteCharacter];
     localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
@@ -34,6 +38,7 @@ const Character = ({ id, nombre, fotopersonaje, role, fotorol, fondo }) => {
   };
 
   const deletefav = () => {
+    //Eliminamos el objeto de la lista por el filtro y actualizamos los favoritos
     const updatedFavorites = favorites.filter(item => item.nombre !== nombre);
     localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
     setFavorites(updatedFavorites);
