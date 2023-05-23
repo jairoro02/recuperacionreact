@@ -3,7 +3,7 @@ import {NavLink} from 'react-router-dom'
 import { useUserContext } from '../context/UserContext'
 
 const Navbar = () => {
-    const { user } = useUserContext
+    const { user } = useUserContext()
     console.log(user)
   return (
     <nav className='navbar'>
