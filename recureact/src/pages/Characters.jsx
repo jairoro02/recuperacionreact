@@ -15,18 +15,22 @@ const Characters = () => {
       let filtered = response;
       // Filtrado por role si hay alguno seleccionado
       if (selectedRole) {
+        // Aquí cambia el valor de filtered por los agentes que cumplan la condición
         filtered = filtered.filter((agent) => agent.role.displayName === selectedRole);
       }
 
       // Filtrado por las letras del nombre
       if (searchName) {
-        const searchTermLower = searchName.toLowerCase();
+        const searchNameLower = searchName.toLowerCase();
+
+        // Aquí cambia el valor de filtered por los agentes que cumplan la condición
         filtered = filtered.filter((agent) =>
-          agent.displayName.toLowerCase().startsWith(searchTermLower)
+          agent.displayName.toLowerCase().startsWith(searchNameLower)
         );
       }
 
       // Si los anteriores if no se ejecutan filtered seguirá siendo = a la respuesta de la api, sin ningún tipo de filtrado
+      // Con este seteo cambiaremos la lista filteredAgents que es la que usaremos para renderizar nuestros personajes
       setFilteredAgents(filtered);
     });
   }, [selectedRole, searchName]);
@@ -43,23 +47,8 @@ const Characters = () => {
       <select
         value={selectedRole}
         onChange={(e) => setSelectedRole(e.target.value)}
-        onKeyDown={(e) => {
-          if (e.key === 'Enter') {
-            setFilteredAgents((prevAgents) => {
-              let filtered = prevAgents;
-
-              if (searchName) {
-                const searchTermLower = searchName.toLowerCase();
-                filtered = filtered.filter((agent) =>
-                  agent.displayName.toLowerCase().startsWith(searchTermLower)
-                );
-              }
-
-              return filtered;
-            });
-          }
-        }}
       >
+
         <option value="">Todos los roles</option>
         <option value="Sentinel">Sentinel</option>
         <option value="Initiator">Initiator</option>
