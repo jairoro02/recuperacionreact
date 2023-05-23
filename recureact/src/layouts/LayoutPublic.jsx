@@ -9,8 +9,7 @@ const LayoutPublic = () => {
   <UserProvider>
       <div>
           <Navbar />
-          <Outlet />
-          
+          <Outlet />  
       </div>
     </UserProvider>
   )

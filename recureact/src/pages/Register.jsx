@@ -18,6 +18,12 @@ const Register = () => {
     const { setUser } = useUserContext();
 
     const dataCompilation = (data) => {
+        if(localStorage.getItem("logedUser")){
+            localStorage.removeItem("logedUser")
+            localStorage.setItem("logedUser", JSON.stringify(data))
+        }else{
+            localStorage.setItem("logedUser", JSON.stringify(data))
+        }
         const updatedUsers = [...registeredUsers, data];
         setRegisteredUsers(updatedUsers)
         localStorage.setItem('registeredUsers', JSON.stringify(updatedUsers));

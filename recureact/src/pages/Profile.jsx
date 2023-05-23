@@ -7,6 +7,13 @@ const Profile = () => {
     const navigate = useNavigate()
     const { user, setUser } = useUserContext()
 
+    //creamos esta funcion para desloguearnos y redirigimos de nuevo a la página de registro
+    const logout = () => {
+      setUser(false);
+      localStorage.removeItem("logedUser");
+      navigate("/register");
+    };
+
     
     useEffect(()=>{
         if(!user){
@@ -14,7 +21,11 @@ const Profile = () => {
         }
     },[])
   return (
-    <div>Profile</div>
+    <div>
+      <h1>{JSON.parse(localStorage.getItem("logedUser"))["name"]}</h1>
+      <h1>{JSON.parse(localStorage.getItem("logedUser"))["email"]}</h1>
+      <button onClick={logout}>Cerrar sesión</button>
+    </div>
   )
 }
 

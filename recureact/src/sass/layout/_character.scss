@@ -41,5 +41,13 @@
             align-self: center;
             margin: 2% 0 7% 0;
         }
+        .heart{
+            font-size: 300%;
+            color: white;
+            cursor: pointer;
+        }
+        .heart.favorite{
+            color: red;
+        }
     }
 }
