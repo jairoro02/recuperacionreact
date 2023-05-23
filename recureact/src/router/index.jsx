@@ -6,6 +6,7 @@ import NotFound from "../pages/NOtFound";
 import LayoutPublic from "../layouts/LayoutPublic";
 import Register from "../pages/Register";
 import Skins from "../pages/Skins";
+import Profile from "../pages/Profile";
 
 
 
@@ -34,6 +35,10 @@ export const router = createBrowserRouter([
             {
                 path: '/skins/:uuid',
                 element: <Skins />
+            },
+            {
+                path: '/profile',
+                element: <Profile />
             }
         ],
     },

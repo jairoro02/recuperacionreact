@@ -7,7 +7,6 @@ const Weapon = ({ list }) => {
     <div className='weapons'>
       {list.map((weapon) => {
         if (weapon.shopData === null) {
-          console.log(weapon);
           return (
             <Link key={weapon.uuid} to={`/skins/${weapon.uuid}`}>
               <div className='weapon'>

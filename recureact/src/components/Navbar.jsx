@@ -21,7 +21,7 @@ const Navbar = () => {
 
         <div className='user-options'>
         {user ? (
-          <NavLink to='/weapons' className='user-option'>
+          <NavLink to='/profile' className='user-option'>
             Profile
           </NavLink>
         ) : (

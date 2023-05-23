@@ -30,12 +30,16 @@
         display: flex;
         flex-direction: column;
         .texto{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
             color: white;
 
         }
         img{
-            justify-self: center;
-            margin-top: 15%;
+            width: 60%;
+            align-self: center;
+            margin: 2% 0 7% 0;
         }
     }
 }
