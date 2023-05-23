@@ -3,12 +3,14 @@ import { useApi } from '../helper/useApi';
 import Character from '../components/Character';
 import Loader from '../components/Loader';
 
+
 const Characters = () => {
   const [filteredAgents, setFilteredAgents] = useState([]);
   const [selectedRole, setSelectedRole] = useState('');
   const [searchName, setSearchName] = useState('');
 
   const url = 'https://valorant-api.com/v1/agents?isPlayableCharacter=true';
+
 
   useEffect(() => {
     useApi(url).then((response) => {
