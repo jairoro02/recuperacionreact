@@ -48,9 +48,6 @@ const Register = () => {
         navigate("/profile")
     };
 
-    const password = watch('password');
-    const repeatPassword = watch('rpassword');
-    const passwordsMatch = password === repeatPassword;
 
 
   return (
@@ -137,6 +134,7 @@ const Register = () => {
 
             
             <input className='submit' type="submit" value="Submit" />
+            <p className='signin'>I have an acount. <a href='/login'>Login</a></p>
         </form>
     </div>
     )

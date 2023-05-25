@@ -7,6 +7,7 @@ import LayoutPublic from "../layouts/LayoutPublic";
 import Register from "../pages/Register";
 import Skins from "../pages/Skins";
 import Profile from "../pages/Profile";
+import Login from "../pages/Login";
 
 
 
@@ -39,6 +40,10 @@ export const router = createBrowserRouter([
             {
                 path: '/profile',
                 element: <Profile />
+            },
+            {
+                path:'/login',
+                element: <Login />
             }
         ],
     },

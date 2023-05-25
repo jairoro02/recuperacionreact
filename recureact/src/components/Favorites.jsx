@@ -4,11 +4,13 @@ import { faHeart } from '@fortawesome/free-solid-svg-icons';
 
 const Favorites = ({ id, nombre, fotopersonaje, role, fotorol, fondo, favoritesChange }) => {
 
+    const email = JSON.parse(localStorage.getItem("logedUser"))["email"]
+
     //Con esta función elimnamos el personaje de la lista favoritos
     const deletefav = () => {
-        const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+        const favorites = JSON.parse(localStorage.getItem(`${email}_favorites`)) || [];
         const filteredFavorites = favorites.filter((fav) => fav.id !== id);
-        localStorage.setItem('favorites', JSON.stringify(filteredFavorites));
+        localStorage.setItem(`${email}_favorites`, JSON.stringify(filteredFavorites));
 
         //Al ejecutarse esta función mandamos a renderizar de nuevo a la página profile
         favoritesChange();

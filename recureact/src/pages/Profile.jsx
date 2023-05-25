@@ -7,9 +7,13 @@ const Profile = () => {
 
     const navigate = useNavigate();
     const { user, setUser } = useUserContext();
-    const localFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
+    const email = JSON.parse(localStorage.getItem("logedUser"))["email"]
+    const localFavorites = JSON.parse(localStorage.getItem(`${email}_favorites`)) || [];
     const [favorites, setFavorites] = useState(localFavorites);
     const [favoritesUpdated, setFavoritesUpdated] = useState(false);
+
+  
+    
 
     //creamos esta funcion para desloguearnos y redirigimos de nuevo a la página de registro
     const logout = () => {
@@ -21,7 +25,8 @@ const Profile = () => {
     
     
     useEffect(() => {
-      const updatedFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
+      const email = JSON.parse(localStorage.getItem("logedUser"))["email"]
+      const updatedFavorites = JSON.parse(localStorage.getItem(`${email}_favorites`)) || [];
       setFavorites(updatedFavorites);
       setFavoritesUpdated(false)
     }, [favoritesUpdated]);

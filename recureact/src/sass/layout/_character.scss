@@ -1,19 +1,19 @@
 .characters{
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 5% 3% 0 3%;
 }
 .character{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 5%;
-    margin-bottom: 10%;
+    margin-bottom: 6%;
     background-color: black;
+    flex-wrap: wrap;
    
-    width: 40%;
+    width: 30%;
     .img{
         display: flex;
         background-repeat: no-repeat;

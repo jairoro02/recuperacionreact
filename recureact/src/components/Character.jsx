@@ -8,8 +8,10 @@ const Character = ({ id, nombre, fotopersonaje, role, fotorol, fondo }) => {
   const [favorites, setFavorites] = useState([]);
   const [isFavorite, setIsFavorite] = useState(false);
 
+  const email = JSON.parse(localStorage.getItem("logedUser"))["email"]
+
   useEffect(() => {
-    const existingFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
+    const existingFavorites = JSON.parse(localStorage.getItem(`${email}_favorites`)) || [];
     // Comprobamos si el favorito existe en la lista de favoritos
     const favorite = existingFavorites.find(item => item.id === id);
     // Con !! convertimos el valor en booleano, si es undefined es falso
@@ -29,9 +31,9 @@ const Character = ({ id, nombre, fotopersonaje, role, fotorol, fondo }) => {
     };
 
     //Guardamos el nuevo favorito en la lista
-    const existingFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
+    const existingFavorites = JSON.parse(localStorage.getItem(`${email}_favorites`)) || [];
     const updatedFavorites = [...existingFavorites, favoriteCharacter];
-    localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
+    localStorage.setItem(`${email}_favorites`, JSON.stringify(updatedFavorites));
 
     setFavorites(updatedFavorites);
     setIsFavorite(true);
@@ -40,13 +42,13 @@ const Character = ({ id, nombre, fotopersonaje, role, fotorol, fondo }) => {
   const deletefav = () => {
     //Eliminamos el objeto de la lista por el filtro y actualizamos los favoritos
     const updatedFavorites = favorites.filter(item => item.nombre !== nombre);
-    localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
+    localStorage.setItem(`${email}_favorites`, JSON.stringify(updatedFavorites));
     setFavorites(updatedFavorites);
     setIsFavorite(false);
   };
 
   return (
-    <li key={id} className='character'>
+    <div key={id} className='character'>
       <div className='img' style={{ backgroundImage: `url(${fondo})` }}>
         <img src={fotopersonaje} alt={nombre} />
       </div>
@@ -64,7 +66,7 @@ const Character = ({ id, nombre, fotopersonaje, role, fotorol, fondo }) => {
           )}
         </div>
       </div>
-    </li>
+    </div>
   );
 };
 
