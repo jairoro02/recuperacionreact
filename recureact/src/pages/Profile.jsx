@@ -1,12 +1,15 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import { useNavigate } from 'react-router-dom';
 import { useUserContext } from '../context/UserContext'
-import Character from '../components/Character';
+import Favorites from '../components/Favorites';
 
 const Profile = () => {
 
-    const navigate = useNavigate()
-    const { user, setUser } = useUserContext()
+    const navigate = useNavigate();
+    const { user, setUser } = useUserContext();
+    const localFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
+    const [favorites, setFavorites] = useState(localFavorites);
+    const [favoritesUpdated, setFavoritesUpdated] = useState(false);
 
     //creamos esta funcion para desloguearnos y redirigimos de nuevo a la página de registro
     const logout = () => {
@@ -15,14 +18,20 @@ const Profile = () => {
       navigate("/register");
     };
 
-    const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
     
-    useEffect(()=>{
-        if(!user){
-        navigate("/register")
-        }
+    
+    useEffect(() => {
+      const updatedFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
+      setFavorites(updatedFavorites);
+      setFavoritesUpdated(false)
+    }, [favoritesUpdated]);
 
-    },[])
+    const favoritesChange = () => {
+      console.log("funciona")
+      setFavoritesUpdated(true);
+    };
+
+
   return (
     <div>
       <h1>{JSON.parse(localStorage.getItem("logedUser"))["name"]}</h1>
@@ -31,7 +40,7 @@ const Profile = () => {
       {favorites.length !== 0 ? (
         <ul className="characters">
           {favorites.map((agent) => (
-            <Character
+            <Favorites
               key={agent.id}
               id={agent.id}
               nombre={agent.nombre}
@@ -39,6 +48,7 @@ const Profile = () => {
               role={agent.role}
               fotorol={agent.fotorol}
               fondo={agent.fondo}
+              favoritesChange={favoritesChange}
             />
           ))}
         </ul>
