@@ -26,8 +26,10 @@ const Favorites = ({ id, nombre, fotopersonaje, role, fotorol, fondo, favoritesC
       <div className='infopersonaje'>
         <div className='texto'>
           <h1>Name: {nombre}</h1>
-          <h1>Role: {role}</h1>
-          <img src={fotorol} alt={role} />
+          <div className='role'>
+            <img src={fotorol} alt={role} />
+            <h1>{role}</h1>
+          </div>
             <FontAwesomeIcon
               className={"heart favorite"}
               icon={faHeart}

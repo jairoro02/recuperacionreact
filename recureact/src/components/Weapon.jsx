@@ -20,8 +20,7 @@ const Weapon = ({ list }) => {
           );
         } else {
           return (
-            <Link key={weapon.uuid} to={`/skins/${weapon.uuid}`}>
-              <div className='weapon'>
+            <Link key={weapon.uuid} to={`/skins/${weapon.uuid}`} className='weapon'>
                 <img src={weapon.displayIcon} />
                 <div className='info'>
                   <h1>Category: {weapon.shopData.category}</h1>
@@ -30,7 +29,6 @@ const Weapon = ({ list }) => {
                   <h1>Firerate: {weapon.weaponStats.fireRate}</h1>
                   <h1>Bullets: {weapon.weaponStats.magazineSize}</h1>
                 </div>
-              </div>
             </Link>
           );
         }

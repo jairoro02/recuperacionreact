@@ -32,16 +32,18 @@ const Profile = () => {
     }, [favoritesUpdated]);
 
     const favoritesChange = () => {
-      console.log("funciona")
       setFavoritesUpdated(true);
     };
 
 
   return (
-    <div>
-      <h1>{JSON.parse(localStorage.getItem("logedUser"))["name"]}</h1>
-      <h1>{JSON.parse(localStorage.getItem("logedUser"))["email"]}</h1>
-      <button onClick={logout}>Cerrar sesión</button>
+    <div className='init'>
+      <div className='data'>
+        <h1>{JSON.parse(localStorage.getItem("logedUser"))["name"]}</h1>
+        <h1>{JSON.parse(localStorage.getItem("logedUser"))["email"]}</h1>
+        <button onClick={logout}>Cerrar sesión</button>
+      </div>
+      
       {favorites.length !== 0 ? (
         <ul className="characters">
           {favorites.map((agent) => (

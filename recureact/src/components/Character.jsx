@@ -8,9 +8,13 @@ const Character = ({ id, nombre, fotopersonaje, role, fotorol, fondo }) => {
   const [favorites, setFavorites] = useState([]);
   const [isFavorite, setIsFavorite] = useState(false);
 
-  const email = JSON.parse(localStorage.getItem("logedUser"))["email"]
 
   useEffect(() => {
+    if(user){
+      var email = JSON.parse(localStorage.getItem("logedUser"))["email"]
+    }else{
+      var email = "default"
+    }
     const existingFavorites = JSON.parse(localStorage.getItem(`${email}_favorites`)) || [];
     // Comprobamos si el favorito existe en la lista de favoritos
     const favorite = existingFavorites.find(item => item.id === id);
@@ -29,6 +33,11 @@ const Character = ({ id, nombre, fotopersonaje, role, fotorol, fondo }) => {
       fotorol,
       fondo,
     };
+    if(user){
+      var email = JSON.parse(localStorage.getItem("logedUser"))["email"]
+    }else{
+      var email = "default"
+    }
 
     //Guardamos el nuevo favorito en la lista
     const existingFavorites = JSON.parse(localStorage.getItem(`${email}_favorites`)) || [];
@@ -41,6 +50,11 @@ const Character = ({ id, nombre, fotopersonaje, role, fotorol, fondo }) => {
 
   const deletefav = () => {
     //Eliminamos el objeto de la lista por el filtro y actualizamos los favoritos
+    if(user){
+      var email = JSON.parse(localStorage.getItem("logedUser"))["email"]
+    }else{
+      var email = "default"
+    }
     const updatedFavorites = favorites.filter(item => item.nombre !== nombre);
     localStorage.setItem(`${email}_favorites`, JSON.stringify(updatedFavorites));
     setFavorites(updatedFavorites);
@@ -55,8 +69,11 @@ const Character = ({ id, nombre, fotopersonaje, role, fotorol, fondo }) => {
       <div className='infopersonaje'>
         <div className='texto'>
           <h1>Name: {nombre}</h1>
-          <h1>Role: {role}</h1>
-          <img src={fotorol} alt={role} />
+          <div className='role'>
+            <img src={fotorol} alt={role} />
+            <h1>{role}</h1>
+          </div>
+          
           {user && (
             <FontAwesomeIcon
               className={`heart ${isFavorite ? 'favorite' : ''}`}

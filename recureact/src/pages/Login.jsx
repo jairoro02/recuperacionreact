@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useUserContext } from '../context/UserContext'
 
 const Login = () => {
-    const { register, formState: { errors }, handleSubmit, watch } = useForm();
+    const { register, formState: { errors }, handleSubmit} = useForm({mode:"onChange"});
     const navigate = useNavigate();
     const { setUser } = useUserContext();
 
@@ -21,17 +21,12 @@ const Login = () => {
         const userRegistered = JSON.parse(localStorage.getItem("registeredUsers"))
         if(!!userRegistered){ 
             userRegistered.map((user)=>{
-                console.log(user)
-                console.log(data)
                 if(user.name === data.name && user.email===data.email && user.password === data.password){
                     localStorage.setItem("logedUser", JSON.stringify(data))
                     setUser(true)
                     navigate("/profile")
-                }else{
-                    window.alert("Este usuario no está registrado")
                 }
             })
-            
         }else{
             window.alert("No hay usuarios registrados en la web")
         }
@@ -60,11 +55,12 @@ const Login = () => {
                     })}
                     onKeyDown={handleKeyDown}
                     />
-                    {errors.name?.type === 'required' && <span>Este campo es requerido</span>}
-                    {errors.name?.type === 'maxLength' && <p className='error'>Este nombre es demasiado largo</p>}
-                    {errors.name?.type === 'minLength' && <p className='error'>El nombre tiene que contener mínimo 4 caracteres</p>}
+                    
                     <span>Name</span>
                 </label>
+                    {errors.name?.type === 'required' && <p className='error'>Este campo es requerido</p>}
+                    {errors.name?.type === 'maxLength' && <p className='error'>Este nombre es demasiado largo</p>}
+                    {errors.name?.type === 'minLength' && <p className='error'>El nombre tiene que contener mínimo 4 caracteres</p>}
     
                 <label >
                 
@@ -81,11 +77,12 @@ const Login = () => {
                     })}
                     onKeyDown={handleKeyDown}
                     />
-                    {errors.email?.type === 'pattern' && <p className='error'>Esto no es un tipo de email válido</p>}
-                    {errors.email?.type === 'required' && <span>Este campo es requerido</span>}
+                    
     
                     <span>Email</span>
                 </label>
+                    {errors.email?.type === 'pattern' && <p className='error'>Esto no es un tipo de email válido</p>}
+                    {errors.email?.type === 'required' && <p className='error'>Este campo es requerido</p>}
                 
     
     
@@ -99,10 +96,11 @@ const Login = () => {
                     })}
                     onKeyDown={handleKeyDown}
                     />
-                    {errors.password?.type === 'required' && <span>Este campo es requerido</span>}
+                    
     
                     <span>Password</span>
                 </label>
+                {errors.password?.type === 'required' && <p className='error'>Este campo es requerido</p>}
                 <input className='submit' type="submit" value="Submit" />
             </form>
         </div>

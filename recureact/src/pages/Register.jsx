@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useUserContext } from '../context/UserContext'
 
 const Register = () => {
-    const { register, formState: { errors }, handleSubmit, watch } = useForm();
+    const { register, formState: { errors }, handleSubmit, watch } = useForm({mode:"onChange"});
     const [registeredUsers, setRegisteredUsers] = useState([]);
     const navigate = useNavigate();
     const { setUser } = useUserContext();
@@ -127,11 +127,11 @@ const Register = () => {
                 onKeyDown={handleKeyDown}
                 />
                 {errors.rpassword?.type === 'required' && <span>Este campo es requerido</span>}
-                {errors.rpassword?.type === 'validate' && <p className='error'>{errors.rpassword.message}</p>}
+                
 
                 <span className='span'>Repeat Password</span>
             </label>
-
+            {errors.rpassword?.type === 'validate' && <p className='error'>{errors.rpassword.message}</p>}
             
             <input className='submit' type="submit" value="Submit" />
             <p className='signin'>I have an acount. <a href='/login'>Login</a></p>

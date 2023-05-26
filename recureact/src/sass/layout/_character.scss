@@ -2,7 +2,7 @@
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    margin: 5% 3% 0 3%;
+    margin: 2% 3% 0 3%;
 }
 .character{
     display: flex;
@@ -12,6 +12,7 @@
     margin-bottom: 6%;
     background-color: black;
     flex-wrap: wrap;
+    border-radius: 0% 50px;
    
     width: 30%;
     .img{
@@ -37,14 +38,25 @@
 
         }
         img{
-            width: 60%;
-            align-self: center;
-            margin: 2% 0 7% 0;
+            width: 30%;
+        }
+        h1{
+            padding-bottom: 3%;
+        }
+        .role{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            h1{
+                padding-left: 5%;
+            }
+            padding-bottom: 5%;
         }
         .heart{
             font-size: 300%;
             color: white;
             cursor: pointer;
+            padding-bottom: 5%;
         }
         .heart.favorite{
             color: red;

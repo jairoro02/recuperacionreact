@@ -1,31 +1,40 @@
 .weapons{
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-top: 2%;
-    margin-bottom: 2%;
+    justify-content: space-between;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 2% 3% 0 3%;
     .weapon{
         display: flex;
+        flex-wrap: wrap;
         flex-direction: column;
         margin-top: 2%;
         margin-bottom: 2%;
-        padding-top: 0.5%;
+        padding-top: 4%;
         background-color: black;
-        width: 30%;
-        align-items: center;
-        width: 100%;
+        width: 500px;
+        height: 100%;
+        border-radius: 25px;
+        justify-content: space-between;
+        
 
         img{
+            justify-self: center;
             background-color: white;
             border-radius: 2em;
             width: 95%;
-
-            padding-top: 2%;
+            margin: 0 auto;
 
         }
         .info{
+            display: flex;
+            flex-direction: column;
             color: white;
+            margin-bottom: 2%;
+            align-self: center;
+            justify-self: center;
+            margin: 0 auto;
+            padding-bottom: 2%;
 
         }
     }
